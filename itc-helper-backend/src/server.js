@@ -2,7 +2,6 @@ import Koa from 'koa';
 import serverless from 'serverless-http';
 import koaBody from 'koa-body';
 import logger from 'koa-logger';
-import OAuthServer from 'lib/oauth';
 import router from './router';
 
 export default class Server {
@@ -13,7 +12,6 @@ export default class Server {
 
   middleware() {
     const { app } = this;
-    app.context.oauth = OAuthServer();
     app.use(logger());
     app.use(
       koaBody({
