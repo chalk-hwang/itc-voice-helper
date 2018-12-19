@@ -1,0 +1,11 @@
+[INTENT SLOT]
+ITC_DEPT	ITC_DEPT
+
+[INTENT EXPRESSION]
+<ITC_DEPT>디자인학부</ITC_DEPT>는 어떤  과가 있어
+어떤 과가 있어
+<ITC_DEPT>기계공학부</ITC_DEPT>에는 어떤 과가 있어
+인하공전에는 무슨 과가 있는지 알려줘
+인하공전에는 무슨 과가 있어
+무슨 과가 있어
+<ITC_DEPT>컴퓨터정보공학부</ITC_DEPT>에는 무슨 과가 있어
