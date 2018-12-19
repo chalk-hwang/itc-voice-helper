@@ -1,0 +1,17 @@
+[INTENT SLOT]
+ITC_DEPT	ITC_DEPT
+
+[INTENT EXPRESSION]
+해당 학부 설명 좀 해줘
+학부에 대해 자세히 알려줘
+해당 학부에 대해 자세히 알려줘
+<ITC_DEPT>정보산업공학부</ITC_DEPT>가 궁금해
+<ITC_DEPT>지구환경공학부</ITC_DEPT>에 대해 궁금해
+인하공전 <ITC_DEPT>기계공학부</ITC_DEPT>에 대해 알려줘
+무슨 학부가 있는지 알려줘
+어떤 학부가 있니
+무슨 학부가 있니
+인하공전에 무슨 학부가 있니
+인하공전 학부에 대해 알려줘
+<ITC_DEPT>컴퓨터정보공학부</ITC_DEPT>에 대해 알려줘
+인하공전에 있는 학부를 알려줘

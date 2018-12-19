@@ -1,0 +1,12 @@
+[INTENT SLOT]
+ITC_SUB_DEPT	ITC_SUB_DEPT
+
+[INTENT EXPRESSION]
+인하공전 <ITC_SUB_DEPT>항공운항과</ITC_SUB_DEPT>의 교수진이 궁금해
+<ITC_SUB_DEPT>메카트로닉스과</ITC_SUB_DEPT>의 교수진이 궁금해
+<ITC_SUB_DEPT>기계설계과</ITC_SUB_DEPT>의 교수진 알려줘
+인하공전 <ITC_SUB_DEPT>기계과</ITC_SUB_DEPT> 교수진 알려줘
+<ITC_SUB_DEPT>컴퓨터정보과</ITC_SUB_DEPT> 교수진이 궁금해
+<ITC_SUB_DEPT>컴퓨터시스템과</ITC_SUB_DEPT> 교수진 알려줘
+교수진 알려줘
+교수진이 궁금해
