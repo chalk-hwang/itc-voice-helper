@@ -32,7 +32,7 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths:
-            - velog-frontend/build
+            - itc-helper-frontend/build
   deploy-frontend:
     docker:
       - image: circleci/python:2.7-jessie
