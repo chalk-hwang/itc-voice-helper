@@ -1,0 +1,43 @@
+@import 'styles/utils.scss';
+
+.LoginForm {
+  .login-wrapper {
+    border: 0.0625rem solid #cbcbcb;
+    border-radius: 0.25rem;
+    background: #fff;
+  }
+  .login-ment {
+    color: #333;
+    text-align: center;
+    padding: 0 0.9375rem;
+    margin-bottom: 1.25rem;
+  }
+  .inp-auth {
+    border: none;
+    border-top: 0.0625rem solid #e8e8e8;
+    &:first-child {
+      border-top: none;
+    }
+  }
+  .btn-login {
+    margin-top: 1rem;
+  }
+
+  .utilities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      padding: 0 4px;
+      color: #333;
+      margin-bottom: 0.8125rem;
+      a {
+        font-weight: 500;
+        color: #333;
+        text-decoration: none;
+      }
+    }
+  }
+}

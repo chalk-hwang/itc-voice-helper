@@ -1,0 +1,41 @@
+@import 'styles/utils.scss';
+
+.Divider {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  margin: 18px 0;
+  &.textEmpty {
+    .divider-content {
+      padding: 0;
+    }
+  }
+  .divider-content {
+    display: inline-block;
+    position: relative;
+    padding: 0 16px;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      width: 5000px;
+      border-bottom: 1px solid #dbdbdb;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      width: 5000px;
+      border-bottom: 1px solid #dbdbdb;
+    }
+    .text {
+      font-size: 14px;
+      color: #cecece;
+      font-weight: 500;
+      line-height: 14px;
+      word-wrap: break-word;
+    }
+  }
+}

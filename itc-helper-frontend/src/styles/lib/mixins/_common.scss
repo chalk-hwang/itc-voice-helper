@@ -1,0 +1,55 @@
+// hover only for non-mobile
+@mixin hover() {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// set ellipsis
+@mixin ellipsis() {
+  min-width: 0; // for flex
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// set common button style
+@mixin common-button-style() {
+  padding: 0.6rem;
+  font-weight: 500;
+  border-radius: 2px;
+  line-height: 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+@mixin common-font() {
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", AppleSDGothicNeo, "Noto Sans CJK KR", "NanumGothic", "Malgun Gothic", "맑은 고딕", 돋움, dotum, arial, sans-serif; // font-family: "Spoqa Han Sans", "Apple SD Gothic Neo", AppleSDGothicNeo,
+}
+
+@mixin unstyle-button() {
+  outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+  text-align: inherit;
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}

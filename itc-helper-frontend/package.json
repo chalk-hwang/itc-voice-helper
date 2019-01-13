@@ -1,0 +1,37 @@
+{
+  "name": "itc-helper-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "flow-bin": "^0.87.0",
+    "include-media": "^1.4.9",
+    "node-sass": "^4.11.0",
+    "open-color": "^1.6.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
+    "redux-pender": "^2.0.9"
+  },
+  "scripts": {
+    "finalize": "yarn build && yarn deploy && yarn invalidate",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "aws --profile=dguri s3 sync ./build s3://itc-helper.dguri.io/",
+    "invalidate": "aws --profile=dguri cloudfront create-invalidation --distribution-id E165QUCR4GAWMG --paths / /index.html /error.html /service-worker.js /manifest.json /favicon.ico"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

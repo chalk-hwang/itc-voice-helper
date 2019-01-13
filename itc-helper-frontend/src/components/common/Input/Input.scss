@@ -1,0 +1,62 @@
+@import 'styles/utils.scss';
+
+.Input {
+  position: relative;
+  font-size: 14px;
+  border: 1px solid #dbdbdb;
+  // &.has-error {
+  //   .inp {
+  //     color: $danger-color !important;
+  //   }
+  // }
+  .inp {
+    width: 100%;
+    line-height: 38px;
+    padding: 0 10px;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    outline: none;
+    font-size: inherit;
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px white inset;
+      border-radius: 4px;
+    }
+  }
+  .lbl {
+    position: absolute;
+    left: 10px;
+    line-height: 38px;
+    color: #cecece;
+    &.hide-label {
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+  }
+  // .has-error {
+  //   padding: 0 10px 10px;
+  //   font-size: 12px;
+  //   color: $danger-color !important;
+  // }
+  &.type-password {
+    .inp {
+      padding-right: 50px;
+    }
+    .btn-show-password {
+      border: none;
+      position: absolute;
+      right: 0;
+      width: 38px;
+      height: 38px;
+      font-size: 16px;
+      color: #999;
+      background: transparent;
+    }
+    &.show-on {
+      .btn-show-password {
+        color: #333;
+      }
+    }
+  }
+}

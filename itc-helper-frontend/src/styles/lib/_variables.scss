@@ -1,0 +1,17 @@
+$small-w: 376px;
+$medium-w: 768px;
+$large-w: 1024px;
+$x-large-w: 1200px;
+$xx-large-w: 1400px;
+$wide-w: 1600px;
+$x-wide-w: 1920px;
+
+$breakpoints: (
+  small: $small-w,
+  medium: $medium-w,
+  large: $large-w,
+  x-large: $x-large-w,
+  xx-large: $xx-large-w,
+  wide: $wide-w,
+  x-wide: $x-wide-w,
+);

@@ -1,0 +1,7 @@
+{
+  "generate-react-component.componentTemplatePath": "/Users/hwangdonghyeon/Dropbox/workspace_/itc-helper/itc-helper-frontend/.templates/",
+  "editor.formatOnSave": true,
+  "javascript.format.enable": false,
+  "prettier.eslintIntegration": true,
+  "eslint.autoFixOnSave": true
+}
