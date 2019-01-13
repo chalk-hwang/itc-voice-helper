@@ -34,6 +34,18 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:*'
+    - Effect: Allow
+      Action:
+        - ses:SendMail
+      Resource: 'arn:aws:ses:${opt:region, self:provider.region}:*:*'
+    - Effect: Allow
+      Action:
+        - ses:SendEmail
+      Resource: 'arn:aws:ses:${opt:region, self:provider.region}:*:*'
+    - Effect: Allow
+      Action:
+        - sqs:SendMessage
+      Resource: 'arn:aws:sqs:${opt:region, self:provider.region}:*:*'
 
 functions:
   api:
@@ -43,7 +55,7 @@ functions:
           path: /
           method: ANY
           cors:
-            origin: '*'
+            origin: 'https://itc-helper.dguri.io'
             headers:
               - Cookie
               - Content-Type
@@ -57,7 +69,7 @@ functions:
           path: /{any+} # this matches any path, the token 'any' doesn't mean anything special
           method: ANY
           cors:
-            origin: '*'
+            origin: 'https://itc-helper.dguri.io'
             headers:
               - Cookie
               - Content-Type

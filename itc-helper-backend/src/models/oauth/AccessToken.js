@@ -1,8 +1,5 @@
 import dynamoose from 'dynamoose';
 
-if (process.env.NODE_ENV === 'development') {
-  dynamoose.local('http://localhost:8000');
-}
 const AccessTokenSchema = new dynamoose.Schema(
   {
     accessToken: {

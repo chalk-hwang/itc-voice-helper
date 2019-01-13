@@ -21,7 +21,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         include: __dirname,
-        exclude: /node_modules\/(?!(koa-bodyparser|koa-logger)\/).*/,
+        exclude: /node_modules\/(?!(koa-bodyparser|koa-logger|scrypt)\/).*/,
         use: {
           loader: 'babel-loader',
           options: {

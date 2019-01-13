@@ -1,8 +1,4 @@
-import dynamoose, { Schema } from 'dynamoose';
-
-if (process.env.NODE_ENV === 'development') {
-  dynamoose.local('http://localhost:8000');
-}
+import dynamoose from 'dynamoose';
 
 const RefreshTokenSchema = new dynamoose.Schema(
   {
