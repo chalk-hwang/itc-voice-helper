@@ -1,6 +1,6 @@
 import dynamoose from 'dynamoose';
 import uuidv4 from 'uuid/v4';
-import { encrypt, decrypt } from 'lib/ksm';
+import { encrypt, decrypt } from 'lib/kms';
 
 const UserSchema = new dynamoose.Schema(
   {
