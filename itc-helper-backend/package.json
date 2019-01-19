@@ -37,7 +37,7 @@
   "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
   "license": "MIT",
   "dependencies": {
-    "@koa/cors": "2",
+    "@koa/cors": "2.2.3",
     "aws-sdk": "^2.175.0",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
