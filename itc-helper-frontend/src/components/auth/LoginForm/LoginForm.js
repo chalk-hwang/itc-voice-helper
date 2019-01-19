@@ -8,11 +8,22 @@ import './LoginForm.scss';
 
 type Props = {};
 
-const LoginForm = (props: Props) => (
+const LoginForm = ({ onChange }: Props) => (
   <div className="LoginForm">
     <div className="login-wrapper">
-      <Input label="이메일" className="inp-auth" />
-      <Input type="password" className="inp-auth" label="비밀번호" />
+      <Input
+        label="이메일"
+        className="inp-auth"
+        name="email"
+        onChange={onChange}
+      />
+      <Input
+        type="password"
+        className="inp-auth"
+        label="비밀번호"
+        name="password"
+        onChange={onChange}
+      />
     </div>
     <Button className="btn-login" fullWidth>
       로그인

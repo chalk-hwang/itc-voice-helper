@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
     "flow-bin": "^0.87.0",
+    "immer": "^1.10.4",
     "include-media": "^1.4.9",
     "node-sass": "^4.11.0",
     "open-color": "^1.6.3",
+    "query-string": "^6.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
@@ -17,6 +20,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
+    "redux-actions": "^2.6.4",
     "redux-pender": "^2.0.9"
   },
   "scripts": {
@@ -33,5 +37,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:4000/"
 }

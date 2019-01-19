@@ -25,13 +25,15 @@
   }
   .logo {
     width: 12.5rem;
-    margin: 0 auto;
+    margin: 0 auto 2.1875rem;
     svg {
       display: block;
     }
   }
+  .client-content {
+  }
   .auth-content {
-    margin-top: 35px;
+    margin-top: 1rem;
   }
   .footer {
     display: flex;

@@ -1,0 +1,30 @@
+@import 'styles/utils.scss';
+
+.OAuthClient {
+  margin-top: 1.25rem;
+  .client-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    img {
+      width: auto;
+      max-width: 9.375rem;
+      height: auto;
+      max-height: 2.5rem;
+      display: block;
+    }
+  }
+  .client-name {
+    font-size: 0.875rem;
+    text-align: center;
+    color: #333;
+  }
+  .client-scope {
+    font-size: 0.875rem;
+    text-align: center;
+    color: #333;
+  }
+}

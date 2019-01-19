@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from 'static/images/logo.svg';
 import './AuthTemplate.scss';
 
-const AuthTemplate = ({ form }) => (
+const AuthTemplate = ({ children, client }) => (
   <section className="AuthTemplate">
     <main className="auth-wrapper">
       <div className="box">
         <h1 className="logo">
           <Logo />
         </h1>
-        <div className="auth-content">{form}</div>
+        {client && <div className="client-content">{client}</div>}
+        <div className="auth-content">{children}</div>
       </div>
     </main>
     <footer className="footer">

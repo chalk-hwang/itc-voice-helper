@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AuthTemplate from 'components/auth/AuthTemplate';
-import LoginForm from 'components/auth/LoginForm';
+import LoginFormContainer from 'containers/auth/LoginFormContainer';
 
 function mapStateToProps(state) {
   return {};
@@ -9,7 +8,7 @@ function mapStateToProps(state) {
 
 class Login extends Component {
   render() {
-    return <AuthTemplate form={<LoginForm />} />;
+    return <LoginFormContainer />;
   }
 }
 

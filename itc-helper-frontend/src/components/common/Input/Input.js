@@ -15,10 +15,8 @@ class Input extends Component<Props> {
     className: null,
   };
 
-  // onChange = (e: SyntheticInputEvent<HTMLInputElement>) => {};
-
   render() {
-    const { label, type, className } = this.props;
+    const { label, type, className, ...rest } = this.props;
     const processedClassName = cx('Input', className);
     return (
       <div className={processedClassName}>
@@ -27,6 +25,7 @@ class Input extends Component<Props> {
           className="inp"
           aria-label={label}
           placeholder={label}
+          {...rest}
         />
         {type === 'password' && (
           <button
