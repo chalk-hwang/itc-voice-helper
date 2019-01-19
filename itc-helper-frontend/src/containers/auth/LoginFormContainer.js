@@ -5,7 +5,26 @@ import { AuthActions } from 'store/actionCreators';
 import LoginForm from 'components/auth/LoginForm';
 
 class LoginFormContainer extends Component {
-  onLogin = () => {};
+  onLogin = async () => {
+    const { email, password } = this.props;
+    try {
+      const form = {
+        email,
+        password,
+      };
+      await AuthActions.login({
+        form,
+      });
+
+      const { authResult } = this.props;
+
+      if (!authResult) return;
+      const { user } = authResult;
+      console.log(user);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   onChange = (e) => {
     const { value, name } = e.target;
@@ -13,11 +32,18 @@ class LoginFormContainer extends Component {
   };
 
   render() {
-    const { onChange } = this;
-    return <LoginForm onChange={onChange} />;
+    const { onChange, onLogin } = this;
+    return <LoginForm onChange={onChange} onLogin={onLogin} />;
   }
 }
 
-export default connect(({ auth }) => ({
-  client: auth.client,
-}))(withRouter(LoginFormContainer));
+export default connect(({ auth }) => {
+  const { client, loginForm, authResult } = auth;
+  const { email, password } = loginForm;
+  return {
+    client,
+    email,
+    password,
+    authResult,
+  };
+})(withRouter(LoginFormContainer));

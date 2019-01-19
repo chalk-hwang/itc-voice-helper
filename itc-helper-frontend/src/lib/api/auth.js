@@ -9,3 +9,7 @@ export const getClient = ({ clientId, scope, redirectUri }) => {
   });
   return axios.get(`/oauth/getClient?${query}`);
 };
+
+export const login = ({ form }) => {
+  return axios.post('/oauth/login', { form });
+};

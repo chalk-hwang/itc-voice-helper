@@ -17,9 +17,14 @@ class Auth extends Component {
       redirect_uri: redirectUri,
       scope,
     } = queryString.parse(location.search);
+
     if (response_type === 'code') {
       try {
-        await AuthActions.getClient({ clientId, redirectUri, scope });
+        await AuthActions.getClient({
+          clientId,
+          redirectUri,
+          scope: scope.split(' ').join(','),
+        });
       } catch (e) {
         history.replace('/404');
       }

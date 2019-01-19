@@ -5,10 +5,12 @@ import * as AuthAPI from 'lib/api/auth';
 
 const GET_CLIENT = 'auth/GET_CLIENT';
 const CHANGE_LOGIN_FORM = 'auth/CHANGE_LOGIN_FORM';
+const LOGIN = 'auth/LOGIN';
 
 export const actionCreators = {
   getClient: createAction(GET_CLIENT, AuthAPI.getClient),
   changeLoginForm: createAction(CHANGE_LOGIN_FORM),
+  login: createAction(LOGIN, AuthAPI.login),
 };
 
 const initialState = {
@@ -17,6 +19,7 @@ const initialState = {
     email: '',
     password: '',
   },
+  authResult: null,
 };
 
 const reducer = handleActions(
@@ -41,6 +44,18 @@ export default applyPenders(reducer, [
         ...state,
         client: action.payload.data,
       };
+    },
+  },
+  {
+    type: LOGIN,
+    onSuccess: (state, { payload: { data } }) => {
+      const { user, token } = data;
+      return produce(state, (draft) => {
+        draft.authResult = {
+          user,
+          token,
+        };
+      });
     },
   },
 ]);

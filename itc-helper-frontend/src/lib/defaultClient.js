@@ -3,7 +3,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 const baseURL = (() => {
-  if (process.env.NODE_ENV === 'development') return '/';
+  if (process.env.NODE_ENV === 'development') return 'http://localhost:4000/';
   if (process.env.APP_ENV === 'server' && process.env.LOCAL === 'true') {
     return 'http://localhost:4000/';
   }

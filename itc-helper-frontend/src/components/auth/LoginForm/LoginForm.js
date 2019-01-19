@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
 import Divider from 'components/common/Divider';
@@ -8,7 +8,7 @@ import './LoginForm.scss';
 
 type Props = {};
 
-const LoginForm = ({ onChange }: Props) => (
+const LoginForm = ({ onChange, onLogin, location }: Props) => (
   <div className="LoginForm">
     <div className="login-wrapper">
       <Input
@@ -25,7 +25,7 @@ const LoginForm = ({ onChange }: Props) => (
         onChange={onChange}
       />
     </div>
-    <Button className="btn-login" fullWidth>
+    <Button className="btn-login" fullWidth onClick={onLogin}>
       로그인
     </Button>
     <Divider text="또는" />
@@ -33,7 +33,9 @@ const LoginForm = ({ onChange }: Props) => (
       <p>
         회원이 아니신가요?
         {' '}
-        <Link to="/register">회원가입하기</Link>
+        <Link to={{ pathname: '/register', search: location.search }}>
+          회원가입하기
+        </Link>
       </p>
       <p>
         로그인이 안나시나요?
@@ -44,4 +46,4 @@ const LoginForm = ({ onChange }: Props) => (
   </div>
 );
 
-export default LoginForm;
+export default withRouter(LoginForm);
