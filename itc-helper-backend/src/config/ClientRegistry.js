@@ -6,6 +6,7 @@ const itc_clova = {
   id: 'Dv72-g7gd^k!9Vh!$ekXJxqq',
   clientSecret: 'FvpN-y4E6Hf6rktK@Zm6fBxY4rwC6J!L@R$PbG?T4ewe##%^Gqse-Kb6h&6k',
   name: '인하공전 음성 도우미 클로바', // custom field
+  image: 'oauth_clients/Naver_Clova_Logotype.svg',
   scope: 'profile:read,user_timetable:read,user_subject:read', // a custom scope, indicating that this client is allowed to be authorized to read the user's information
   grants: ['authorization_code', 'refresh_token'],
   redirectUris: ['https://prod-ni-cic.clova.ai/v1/al/token'],
@@ -15,22 +16,26 @@ const itc_clova = {
 
 const registry = {
   clients: {
-    itc_clova,
+    'Dv72-g7gd^k!9Vh!$ekXJxqq': itc_clova,
   },
   scopes: {
     'profile:read': {
-      desc: '내 기본 정보를 접근할 수 있습니다.',
+      name: '프로필 정보 읽기',
+      desc: '귀하의 기본 정보를 접근할 수 있습니다.',
     },
     'profile:write': {
-      desc: '내 기본 정보를 수정할 수 있습니다.',
+      name: '프로필 정보 수정',
+      desc: '귀하의 기본 정보를 수정할 수 있습니다.',
     },
     'user_timetable:read': {
-      desc: '내 시간표 정보를 접근할 수 있습니다.',
+      name: '시간표 정보 읽기',
+      desc: '귀하의 시간표 정보를 접근할 수 있습니다.',
     },
     'user_subject:read': {
-      desc: '내 과목 정보를 접근할 수 있습니다.',
+      name: '과목 정보 읽기',
+      desc: '귀하의 과목 정보를 접근할 수 있습니다.',
     },
   },
 };
 
-module.exports = registry;
+export default registry;

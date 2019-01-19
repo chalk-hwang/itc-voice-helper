@@ -55,7 +55,7 @@ functions:
           path: /
           method: ANY
           cors:
-            origin: 'https://itc-helper.dguri.io'
+            origin: '*'
             headers:
               - Cookie
               - Content-Type
@@ -69,7 +69,7 @@ functions:
           path: /{any+} # this matches any path, the token 'any' doesn't mean anything special
           method: ANY
           cors:
-            origin: 'https://itc-helper.dguri.io'
+            origin: '*'
             headers:
               - Cookie
               - Content-Type

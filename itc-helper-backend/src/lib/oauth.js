@@ -1,5 +1,6 @@
 import OAuthServer from 'koa2-oauth-server';
-import OAuthModelStore from '../models/oauth';
+import LocalClientRegistry from 'config/ClientRegistry';
+import OAuthModelStore from 'models/oauth';
 
 const OAuthModel = function (options = {}) {
   if (!(this instanceof OAuthModel)) {
@@ -189,6 +190,7 @@ export default () => {
       AuthorizationCode: OAuthModelStore.AuthorizationCode,
       AccessToken: OAuthModelStore.AccessToken,
       RefreshToken: OAuthModelStore.RefreshToken,
+      ClientRegistry: LocalClientRegistry,
     }),
   });
 };
