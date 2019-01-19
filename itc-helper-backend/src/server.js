@@ -7,7 +7,7 @@ import OAuthServer from 'lib/oauth';
 import router from './router';
 
 const whitelist = [
-  'https://api.itc-helper.dguri.io',
+  'https://itc-helper.dguri.io',
   'https://prod-ni-cic.clova.ai/v1/al/token',
 ];
 
