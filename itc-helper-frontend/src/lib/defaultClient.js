@@ -7,7 +7,7 @@ const baseURL = (() => {
   if (process.env.APP_ENV === 'server' && process.env.LOCAL === 'true') {
     return 'http://localhost:4000/';
   }
-  return 'https://api.velog.io';
+  return 'https://api.itc-helper.dguri.io/';
 })();
 
 const defaultClient: Axios = axios.create({
