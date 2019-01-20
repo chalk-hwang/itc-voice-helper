@@ -10,6 +10,7 @@
     "flow-bin": "^0.87.0",
     "immer": "^1.10.4",
     "include-media": "^1.4.9",
+    "nanobar": "^0.4.2",
     "node-sass": "^4.11.0",
     "open-color": "^1.6.3",
     "query-string": "^6.2.0",

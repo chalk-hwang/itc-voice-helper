@@ -6,11 +6,11 @@ import queryString from 'query-string';
 import { AuthActions } from 'store/actionCreators';
 import AuthTemplate from 'components/auth/AuthTemplate';
 import OAuthClient from 'components/auth/OAuthClient';
-import Login from 'pages/Login';
+import { Login, OAuthDialog } from 'pages';
 
 class Auth extends Component {
   initialize = async () => {
-    const { location, history } = this.props;
+    const { location, history, user } = this.props;
     const {
       response_type,
       client_id: clientId,
@@ -25,6 +25,13 @@ class Auth extends Component {
           redirectUri,
           scope: scope.split(' ').join(','),
         });
+        console.log(location);
+        if (user !== null && location.pathname === '/login') {
+          history.push({
+            pathname: '/oauth/dialog',
+            search: location.search,
+          });
+        }
       } catch (e) {
         history.replace('/404');
       }
@@ -32,8 +39,14 @@ class Auth extends Component {
   };
 
   componentDidMount() {
-    const { location } = this.props;
     this.initialize(); // "?filter=top&origin=im"
+  }
+
+  componentDidUpdate(prevProps) {
+    const { user } = this.props;
+    if (prevProps.user !== user) {
+      this.initialize();
+    }
   }
 
   render() {
@@ -42,6 +55,7 @@ class Auth extends Component {
       <AuthTemplate client={<OAuthClient clientInfo={client} />}>
         <Switch>
           <Route path="/login" component={Login} />
+          <Route path="/oauth/dialog" component={OAuthDialog} />
         </Switch>
       </AuthTemplate>
     );
@@ -51,8 +65,9 @@ class Auth extends Component {
 export default compose(
   withRouter,
   connect(
-    ({ auth }) => ({
+    ({ auth, user }) => ({
       client: auth.client,
+      user: user.user,
     }),
     () => ({}),
   ),

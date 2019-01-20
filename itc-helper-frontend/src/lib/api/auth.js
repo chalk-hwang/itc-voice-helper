@@ -13,3 +13,12 @@ export const getClient = ({ clientId, scope, redirectUri }) => {
 export const login = ({ form }) => {
   return axios.post('/oauth/login', { form });
 };
+
+export const authorize = ({ search }) => {
+  const query = queryString.stringify({
+    ...search,
+  });
+  return axios.get(`/oauth/authorize?${query}`);
+};
+
+export const check = () => axios.get('/oauth/check');

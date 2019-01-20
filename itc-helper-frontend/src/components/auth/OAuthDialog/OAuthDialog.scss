@@ -1,0 +1,14 @@
+@import 'styles/utils.scss';
+
+.OAuthDialog {
+  display: flex;
+  flex-direction: column;
+  .Button {
+    margin: 0;
+    &.btn-deny {
+      margin-top: 0.7rem;
+      font-weight: 400;
+      color: #666;
+    }
+  }
+}

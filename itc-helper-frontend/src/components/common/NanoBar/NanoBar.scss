@@ -1,0 +1,13 @@
+@import 'styles/utils.scss';
+
+.NanoBar {
+}
+
+.nanobar {
+  position: relative;
+  .bar {
+    position: absolute;
+    top: 0;
+    background: $oc-blue-4;
+  }
+}

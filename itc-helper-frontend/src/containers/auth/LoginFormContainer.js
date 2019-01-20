@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { AuthActions } from 'store/actionCreators';
+import { AuthActions, UserActions } from 'store/actionCreators';
+import storage, { keys } from 'lib/storage';
 import LoginForm from 'components/auth/LoginForm';
 
 class LoginFormContainer extends Component {
@@ -20,7 +21,9 @@ class LoginFormContainer extends Component {
 
       if (!authResult) return;
       const { user } = authResult;
-      console.log(user);
+
+      UserActions.setUser(user);
+      storage.set(keys.user, user);
     } catch (e) {
       console.log(e);
     }
