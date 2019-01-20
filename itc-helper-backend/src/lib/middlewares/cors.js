@@ -1,4 +1,5 @@
 export default (ctx, next) => {
+  if (ctx.request.url === '/oauth/token') return next();
   ctx.set('Access-Control-Allow-Origin', 'https://itc-helper.dguri.io');
   if (
     ctx.headers.referer
