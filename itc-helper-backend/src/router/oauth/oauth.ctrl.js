@@ -3,6 +3,7 @@ import sendQueue from 'lib/sendQueue';
 import * as passwordHash from 'lib/passwordHash';
 import User from 'models/User';
 import LocalClientRegistry from 'config/ClientRegistry';
+import { generate } from 'lib/token';
 
 export const getClient = async (ctx) => {
   const { client_id: clientId, scope, redirect_uri: redirectUri } = ctx.query;
@@ -52,11 +53,131 @@ export const login = async (ctx) => {
         .email()
         .required(),
       password: Joi.string()
-        .required()
-        .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,}$/),
+        .required(),
     }),
   });
+  const result = Joi.validate(ctx.request.body, schema);
+
+  if (result.error) {
+    ctx.status = 400;
+    ctx.body = {
+      name: 'WRONG_SCHEMA',
+      payload: result.error,
+    };
+    return;
+  }
+  try {
+    const { form: { email, password } } = ctx.request.body;
+    const user = await User.queryOne({
+      email: { eq: email },
+    }).exec();
+
+    if (!user) {
+      ctx.status = 401;
+      return;
+    }
+
+    const passwordVeify = await passwordHash.verify(user.password, password);
+    if (!passwordVeify) {
+      ctx.status = 404;
+      return;
+    }
+
+    if (!user.studentValidate) {
+      ctx.status = 401;
+      return;
+    }
+    const tokenData = {
+      id: user.id,
+      email: user.email,
+      studentId: user.studentId,
+      name: user.name,
+      department: user.department,
+      status: user.status,
+      grade: user.grade,
+    };
+
+    const token = await generate({
+      user: tokenData,
+    });
+
+    ctx.cookies.set('access_token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      domain: process.env.NODE_ENV === 'development' ? undefined : '.dguri.io',
+    });
+
+    ctx.body = {
+      user: tokenData,
+      token,
+    };
+  } catch (e) {
+    ctx.throw(500, e);
+  }
   // ctx.cookies.set('access_token',)
+};
+
+export const check = async (ctx) => {
+  if (!ctx.user) {
+    ctx.status = 401;
+    return;
+  }
+
+  try {
+    const now = new Date();
+    const user = await User.get({ id: ctx.user.id });
+    if (!user) {
+      // $FlowFixMe: intersection bug
+      ctx.cookies.set('access_token', null, {
+        domain: process.env.NODE_ENV === 'development' ? undefined : '.dguri.io',
+      });
+      ctx.status = 401;
+      return;
+    }
+    const tokenData = {
+      id: user.id,
+      email: user.email,
+      studentId: user.studentId,
+      name: user.name,
+      department: user.department,
+      status: user.status,
+      grade: user.grade,
+    };
+
+    if (ctx.tokenExpire - now < 1000 * 60 * 60 * 24 * 4) {
+      const token = await generate({
+        user: tokenData,
+      });
+
+      ctx.cookies.set('access_token', token, {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        domain: process.env.NODE_ENV === 'development' ? undefined : '.dguri.io',
+      });
+    }
+
+    ctx.body = {
+      user: tokenData,
+    };
+  } catch (e) {
+    ctx.throw(500, e);
+  }
+};
+
+
+const authenticateHandler = () => {
+  return {
+    handle: (request, response) => {
+      return request.user;
+    },
+  };
+};
+
+export const authorize = async (ctx, next) => {
+  ctx.request.user = ctx.user;
+  return ctx.oauth.authorize({
+    authenticateHandler: authenticateHandler(),
+  })(ctx, next);
 };
 
 export const register = async (ctx) => {
@@ -156,6 +277,6 @@ export const register = async (ctx) => {
   }
 };
 
-export const getToken = async (ctx) => {
-  ctx.body = ctx;
+export const getToken = async (ctx, next) => {
+  return ctx.oauth.token()(ctx, next);
 };

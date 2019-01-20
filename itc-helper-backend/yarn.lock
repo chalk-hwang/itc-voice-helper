@@ -1374,6 +1374,13 @@ basic-auth@1.1.0:
   resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-1.1.0.tgz#45221ee429f7ee1e5035be3f51533f1cdfd29884"
   integrity sha1-RSIe5Cn37h5QNb4/UVM/HN/SmIQ=
 
+basic-auth@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-2.0.1.tgz#b998279bf47ce38344b4f3cf916d4679bbf51e3a"
+  integrity sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==
+  dependencies:
+    safe-buffer "5.1.2"
+
 bcryptjs@^2.4.3:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/bcryptjs/-/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"
@@ -5513,6 +5520,18 @@ oauth2-server@3.0.0:
     statuses "1.3.1"
     type-is "1.6.15"
 
+oauth2-server@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/oauth2-server/-/oauth2-server-3.0.1.tgz#8fdb7eb78f107832f75c554cb42e59a3f37e41ea"
+  integrity sha512-LFAT4MeTaOgdW+b8YMVMsPhJ8LrbSfVkYZRPgRmELJEJoXcchb/L4b9/lEmgpeNtjH8PlFiqof+YwI+y/oJuOg==
+  dependencies:
+    basic-auth "^2.0.0"
+    bluebird "^3.5.1"
+    lodash "^4.17.10"
+    promisify-any "^2.0.1"
+    statuses "^1.5.0"
+    type-is "^1.6.16"
+
 object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
@@ -6091,7 +6110,7 @@ promise-queue@^2.2.3:
   resolved "https://registry.yarnpkg.com/promise-queue/-/promise-queue-2.2.5.tgz#2f6f5f7c0f6d08109e967659c79b88a9ed5e93b4"
   integrity sha1-L29ffA9tCBCelnZZx5uIqe1ek7Q=
 
-promisify-any@2.0.1:
+promisify-any@2.0.1, promisify-any@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/promisify-any/-/promisify-any-2.0.1.tgz#403e00a8813f175242ab50fe33a69f8eece47305"
   integrity sha1-QD4AqIE/F1JCq1D+M6afjuzkcwU=

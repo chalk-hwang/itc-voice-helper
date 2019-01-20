@@ -11,7 +11,7 @@ export const hash = async (plaintext) => {
 
 export const verify = async (hashedtext, plaintext) => {
   try {
-    const result = bcrypt.compare(plaintext, hashedtext);
+    const result = await bcrypt.compare(plaintext, hashedtext);
     return result;
   } catch (e) {
     console.log(`[scrypt] verify error message : ${JSON.stringify(e)}`);

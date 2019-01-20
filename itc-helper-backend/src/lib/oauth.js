@@ -47,6 +47,7 @@ OAuthModel.prototype = {
     if (clientSecret && client.clientSecret !== clientSecret) {
       return null;
     }
+    return client;
   },
   getUser: undefined,
   getUserFromClient: undefined,
@@ -95,6 +96,7 @@ OAuthModel.prototype = {
     });
   },
   async saveAuthorizationCode(code, client, user) {
+    console.log(code);
     const { AuthorizationCode } = this;
 
     const params = {
@@ -185,12 +187,16 @@ OAuthModel.prototype = {
 };
 
 export default () => {
-  return new OAuthServer({
+  const Server = new OAuthServer({
     model: OAuthModel({
       AuthorizationCode: OAuthModelStore.AuthorizationCode,
       AccessToken: OAuthModelStore.AccessToken,
       RefreshToken: OAuthModelStore.RefreshToken,
       ClientRegistry: LocalClientRegistry,
     }),
+    useErrorHandler: true,
+    continueMiddleware: true,
   });
+
+  return Server;
 };

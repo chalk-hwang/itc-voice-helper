@@ -4,11 +4,13 @@ import koaBody from 'koa-body';
 import logger from 'koa-logger';
 import cors from '@koa/cors';
 import OAuthServer from 'lib/oauth';
+import authToken from 'lib/middlewares/authToken';
 import router from './router';
 
 const whitelist = [
   'https://itc-helper.dguri.io',
-  'https://prod-ni-cic.clova.ai/v1/al/token',
+  'https://prod-ni-cic.clova.ai',
+  'http://localhost:3000',
 ];
 
 export default class Server {
@@ -33,6 +35,7 @@ export default class Server {
         credentials: true,
       }),
     );
+    app.use(authToken);
     app.use(
       koaBody({
         multipart: true,

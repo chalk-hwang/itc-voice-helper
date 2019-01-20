@@ -71,10 +71,6 @@ const UserSchema = new dynamoose.Schema(
     timestamps: true,
   },
 );
-UserSchema.methods.gen = async function (studentId) {
-  const chipertext = await encrypt(studentId);
-  this.studentId = chipertext;
-};
 
 const User = dynamoose.model(process.env.USER_DYNAMODB_TABLE, UserSchema);
 
