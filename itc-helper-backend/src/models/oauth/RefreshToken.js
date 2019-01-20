@@ -33,9 +33,9 @@ const RefreshTokenSchema = new dynamoose.Schema(
   },
 );
 
-const AccessToken = dynamoose.model(
+const RefreshToken = dynamoose.model(
   process.env.REFRESH_TOKEN_DYNAMODB_TABLE,
   RefreshTokenSchema,
 );
 
-export default AccessToken;
+export default RefreshToken;

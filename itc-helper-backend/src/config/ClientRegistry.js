@@ -9,7 +9,10 @@ const itc_clova = {
   image: 'oauth_clients/Naver_Clova_Logotype.svg',
   scope: 'profile:read,user_timetable:read,user_subject:read', // a custom scope, indicating that this client is allowed to be authorized to read the user's information
   grants: ['authorization_code', 'refresh_token'],
-  redirectUris: ['https://prod-ni-cic.clova.ai/v1/al/token'],
+  redirectUris: [
+    'https://prod-ni-cic.clova.ai/v1/al/token',
+    'http://localhost:3001/token',
+  ],
   accessTokenLifetime: 7200, // not required, default is 3600,
   refreshTokenLifetime: 3600 * 24 * 30, // not required, default is 2 weeks
 };

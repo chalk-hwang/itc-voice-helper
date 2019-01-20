@@ -40,7 +40,8 @@ OAuthModel.prototype = {
   },
   async getClient(clientId, clientSecret) {
     const { ClientRegistry } = this;
-    const client = ClientRegistry.clients[clientId];
+    const client = ClientRegistry.clients[clientId.trim()];
+    console.log(client);
     if (!client) {
       return null;
     }
@@ -66,6 +67,7 @@ OAuthModel.prototype = {
    * @return {Object} token - the token object saved, same as the parameter 'token'
    */
   async saveToken(token, client, user) {
+    console.log(token);
     const { AccessToken, RefreshToken } = this;
     const commonInfo = {
       client,
@@ -83,8 +85,8 @@ OAuthModel.prototype = {
     promises.push(accessToken.save());
     if (token.refreshToken) {
       const refreshToken = new RefreshToken({
-        accessToken: token.refreshToken,
-        accessTokenExpiresAt: token.refreshTokenExpiresAt,
+        refreshToken: token.refreshToken,
+        refreshTokenExpiresAt: token.refreshTokenExpiresAt,
         ...commonInfo,
       });
 

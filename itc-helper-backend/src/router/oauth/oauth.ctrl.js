@@ -175,6 +175,14 @@ const authenticateHandler = () => {
 
 export const authorize = async (ctx, next) => {
   ctx.request.user = ctx.user;
+
+  // for (var field in ctx.response.headers) {
+  //   console.log(field)
+  //   if(ctx.response.headers.hasOwnProperty(field)){
+
+  //   }
+
+  // }
   return ctx.oauth.authorize({
     authenticateHandler: authenticateHandler(),
   })(ctx, next);
@@ -278,5 +286,5 @@ export const register = async (ctx) => {
 };
 
 export const getToken = async (ctx, next) => {
-  return ctx.oauth.token()(ctx, next);
+  await ctx.oauth.token()(ctx, next);
 };

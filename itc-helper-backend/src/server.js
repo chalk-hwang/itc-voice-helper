@@ -2,7 +2,7 @@ import Koa from 'koa';
 import serverless from 'serverless-http';
 import koaBody from 'koa-body';
 import logger from 'koa-logger';
-import cors from '@koa/cors';
+import cors from 'lib/middlewares/cors';
 import OAuthServer from 'lib/oauth';
 import authToken from 'lib/middlewares/authToken';
 import router from './router';
@@ -23,18 +23,7 @@ export default class Server {
     const { app } = this;
     app.context.oauth = OAuthServer();
     app.use(logger());
-    app.use(
-      cors({
-        origin: (ctx) => {
-          const requestOrigin = ctx.accept.headers.origin;
-          if (!whitelist.includes(requestOrigin)) {
-            return ctx.throw(requestOrigin);
-          }
-          return requestOrigin;
-        },
-        credentials: true,
-      }),
-    );
+    app.use(cors);
     app.use(authToken);
     app.use(
       koaBody({
