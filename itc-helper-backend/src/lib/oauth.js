@@ -1,4 +1,4 @@
-import OAuthServer from 'koa2-oauth-server';
+import OAuthServer from 'lib/koa2-oauth-server';
 import LocalClientRegistry from 'config/ClientRegistry';
 import OAuthModelStore from 'models/oauth';
 

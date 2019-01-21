@@ -2,7 +2,7 @@ import Koa from 'koa';
 import serverless from 'serverless-http';
 import koaBody from 'koa-body';
 import logger from 'koa-logger';
-import cors from 'lib/middlewares/cors';
+import cors from '@koa/cors';
 import OAuthServer from 'lib/oauth';
 import authToken from 'lib/middlewares/authToken';
 import router from './router';
@@ -12,6 +12,14 @@ const whitelist = [
   'https://prod-ni-cic.clova.ai',
   'http://localhost:3000',
 ];
+
+function checkOriginAgainstWhitelist(ctx) {
+  const requestOrigin = ctx.accept.headers.origin;
+  if (!whitelist.includes(requestOrigin)) {
+    return ctx.throw(`🙈 ${requestOrigin} is not a valid origin`);
+  }
+  return requestOrigin;
+}
 
 export default class Server {
   constructor() {
@@ -23,7 +31,7 @@ export default class Server {
     const { app } = this;
     app.context.oauth = OAuthServer();
     app.use(logger());
-    app.use(cors);
+    app.use(cors({ origin: checkOriginAgainstWhitelist, credentials: true }));
     app.use(authToken);
     app.use(
       koaBody({

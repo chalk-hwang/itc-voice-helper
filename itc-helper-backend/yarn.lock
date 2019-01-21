@@ -5520,10 +5520,10 @@ oauth2-server@3.0.0:
     statuses "1.3.1"
     type-is "1.6.15"
 
-oauth2-server@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/oauth2-server/-/oauth2-server-3.0.1.tgz#8fdb7eb78f107832f75c554cb42e59a3f37e41ea"
-  integrity sha512-LFAT4MeTaOgdW+b8YMVMsPhJ8LrbSfVkYZRPgRmELJEJoXcchb/L4b9/lEmgpeNtjH8PlFiqof+YwI+y/oJuOg==
+oauth2-server@3.1.0-beta.1:
+  version "3.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/oauth2-server/-/oauth2-server-3.1.0-beta.1.tgz#159ee4d32d148c2dc7a39f7b1ce872e039b91a41"
+  integrity sha512-FWLl/YC5NGvGzAtclhmlY9fG0nKwDP7xPiPOi5fZ4APO34BmF/vxsEp22spJNuSOrGEsp9W7jKtFCI3UBSvx5w==
   dependencies:
     basic-auth "^2.0.0"
     bluebird "^3.5.1"
