@@ -1,6 +1,5 @@
 import dynamoose from 'dynamoose';
 import uuidv4 from 'uuid/v4';
-import { encrypt, decrypt } from 'lib/ksm';
 
 const SubjectSchema = new dynamoose.Schema({
   id: {

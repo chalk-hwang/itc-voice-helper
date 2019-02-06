@@ -34,7 +34,7 @@ const RefreshTokenSchema = new dynamoose.Schema(
 );
 
 const RefreshToken = dynamoose.model(
-  process.env.REFRESH_TOKEN_DYNAMODB_TABLE,
+  process.env.DYNAMODB_TABLE_REFRESH_TOKEN,
   RefreshTokenSchema,
 );
 

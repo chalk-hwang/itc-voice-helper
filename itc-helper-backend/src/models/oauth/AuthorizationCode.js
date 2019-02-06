@@ -37,7 +37,7 @@ const AuthorizationCodeSchema = new dynamoose.Schema(
 );
 
 const AuthorizationCode = dynamoose.model(
-  process.env.AUTHORIZATION_CODE_DYNAMODB_TABLE,
+  process.env.DYNAMODB_TABLE_AUTHORIZATION_CODE,
   AuthorizationCodeSchema,
 );
 

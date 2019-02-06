@@ -34,7 +34,7 @@ const AccessTokenSchema = new dynamoose.Schema(
 );
 
 const AccessToken = dynamoose.model(
-  process.env.ACCESS_TOKEN_DYNAMODB_TABLE,
+  process.env.DYNAMODB_TABLE_ACCESS_TOKEN,
   AccessTokenSchema,
 );
 

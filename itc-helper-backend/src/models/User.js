@@ -72,6 +72,6 @@ const UserSchema = new dynamoose.Schema(
   },
 );
 
-const User = dynamoose.model(process.env.USER_DYNAMODB_TABLE, UserSchema);
+const User = dynamoose.model(process.env.DYNAMODB_TABLE_USER, UserSchema);
 
 export default User;

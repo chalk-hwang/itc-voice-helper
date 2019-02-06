@@ -1,27 +1,26 @@
 service:
-  name: api-itc-helper
+  name: itc-helper
 
 # Add the serverless-webpack plugin
 plugins:
   - serverless-webpack
-  - serverless-dotenv-plugin
   - serverless-domain-manager
-  - serverless-dynamodb-local
   - serverless-offline
 
 provider:
   name: aws
   runtime: nodejs8.10
   region: ap-northeast-2
-  profile: ${env:AWS_PROFILE}
   environment:
-    SESSION_DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-session
-    ACCESS_TOKEN_DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-access-token
-    REFRESH_TOKEN_DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-refresh-token
-    AUTHORIZATION_CODE_DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-authorization-code
-    USER_DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-user
-    SUBJECT_DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-subject
-    REPORT_DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-report
+    DYNAMODB_TABLE_ACCESS_TOKEN: ${env:DYNAMODB_TABLE_ACCESS_TOKEN}
+    DYNAMODB_TABLE_REFRESH_TOKEN: ${env:DYNAMODB_TABLE_REFRESH_TOKEN}
+    DYNAMODB_TABLE_AUTHORIZATION_CODE: ${env:DYNAMODB_TABLE_AUTHORIZATION_CODE}
+    DYNAMODB_TABLE_USER: ${env:DYNAMODB_TABLE_USER}
+    DYNAMODB_TABLE_SUBJECT: ${env:DYNAMODB_TABLE_SUBJECT}
+    DYNAMODB_TABLE_REPORT: ${env:DYNAMODB_TABLE_REPORT}
+    KMS_KEY_ID: ${env:KMS_KEY_ID}
+    SECRET_KEY: ${env:SECRET_KEY}
+    SQS_QUEUE_URL: ${env:SQS_QUEUE_URL}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -48,7 +47,7 @@ provider:
       Resource: 'arn:aws:sqs:${opt:region, self:provider.region}:*:*'
 
 functions:
-  api:
+  backend:
     handler: src/api.handler
     events:
       - http:
@@ -90,3 +89,5 @@ custom:
     certificateName: api.itc-helper.dguri.io
     createRoute53Record: true
     endpointType: 'regional'
+  serverless-offline:
+    port: 4000
