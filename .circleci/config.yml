@@ -63,7 +63,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-ssr-dependencies-{{ checksum "package.json" }}
+          key: v1-backend-dependencies-{{ checksum "package.json" }}
       - run: yarn deploy
 workflows:
   version: 2
