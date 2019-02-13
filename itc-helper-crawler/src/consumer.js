@@ -33,8 +33,6 @@ const consumer = async () => {
     monitor: PUPPETEER_CLUSTER_MONITOR === 'true',
     puppeteerOptions: {
       headless: PUPPETEER_CLUSTER_HEADLESS === 'true',
-      executablePath:
-        NODE_ENV === 'production' ? '/usr/bin/chromium-browser' : null,
       ...puppeteerOptions,
     },
   });

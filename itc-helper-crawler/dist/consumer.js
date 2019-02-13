@@ -1,42 +1,38 @@
+"use strict";
 
-
-Object.defineProperty(exports, '__esModule', {
-  value: true,
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 exports.default = void 0;
 
-const _sqsConsumer = _interopRequireDefault(require('sqs-consumer'));
+var _sqsConsumer = _interopRequireDefault(require("sqs-consumer"));
 
-const _puppeteerCluster = require('puppeteer-cluster');
+var _puppeteerCluster = require("puppeteer-cluster");
 
-const _studentIdentityCheck = _interopRequireDefault(
-  require('crawlers/studentIdentityCheck'),
-);
+var _studentIdentityCheck = _interopRequireDefault(require("crawlers/studentIdentityCheck"));
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const {
   PUPPETEER_CLUSTER_HEADLESS,
   PUPPETEER_CLUSTER_MONITOR,
   SQS_QUEUE_URL,
   NODE_ENV,
+  CHROME_BIN
 } = process.env;
 
 const consumer = async () => {
   let puppeteerOptions = {};
   console.log(NODE_ENV);
+  console.log(CHROME_BIN);
+  console.log(SQS_QUEUE_URL);
 
   if (NODE_ENV === 'production') {
     puppeteerOptions = {
-      args: [
-        // Required for Docker version of Puppeteer
-        '--no-sandbox',
-        '--disable-setuid-sandbox', // This will write shared memory files into /tmp instead of /dev/shm,
-        // because Docker’s default for /dev/shm is 64MB
-        '--disable-dev-shm-usage',
-      ],
+      args: [// Required for Docker version of Puppeteer
+      '--no-sandbox', '--disable-setuid-sandbox', // This will write shared memory files into /tmp instead of /dev/shm,
+      // because Docker’s default for /dev/shm is 64MB
+      '--disable-dev-shm-usage']
     };
   }
 
@@ -46,10 +42,8 @@ const consumer = async () => {
     monitor: PUPPETEER_CLUSTER_MONITOR === 'true',
     puppeteerOptions: {
       headless: PUPPETEER_CLUSTER_HEADLESS === 'true',
-      executablePath:
-        NODE_ENV === 'production' ? '/usr/bin/chromium-browser' : null,
-      ...puppeteerOptions,
-    },
+      ...puppeteerOptions
+    }
   });
   cluster.on('taskerror', (err, data) => {
     let reData = data;
@@ -67,33 +61,32 @@ const consumer = async () => {
     messageAttributeNames: ['Type', 'UserId', 'UserStudentId', 'UserStudentPw'],
     handleMessage: (message, done) => {
       // do some work with `message`
-      const { MessageAttributes } = message;
+      const {
+        MessageAttributes
+      } = message;
       const type = MessageAttributes.Type.StringValue;
       const userId = MessageAttributes.UserId.StringValue;
       const userStudentId = MessageAttributes.UserStudentId.StringValue;
       const userStudentPw = MessageAttributes.UserStudentPw.StringValue;
-      cluster.queue(
-        {
-          userId,
-          userStudentId,
-          userStudentPw,
-        },
-        _studentIdentityCheck.default,
-      );
+      cluster.queue({
+        userId,
+        userStudentId,
+        userStudentPw
+      }, _studentIdentityCheck.default);
       done();
-    },
+    }
   });
 
-  app.on('error', (err) => {
+  app.on('error', err => {
     console.log(err.message);
   });
   app.start();
   await cluster.idle();
   return {
     consumerServer: app,
-    consumerCluster: cluster,
+    consumerCluster: cluster
   };
 };
 
-const _default = consumer;
+var _default = consumer;
 exports.default = _default;
