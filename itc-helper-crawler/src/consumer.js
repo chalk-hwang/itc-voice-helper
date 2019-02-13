@@ -7,10 +7,13 @@ const {
   PUPPETEER_CLUSTER_MONITOR,
   SQS_QUEUE_URL,
   NODE_ENV,
+  CHROME_BIN,
 } = process.env;
 
 const consumer = async () => {
   let puppeteerOptions = {};
+  console.log(NODE_ENV);
+  console.log(CHROME_BIN);
   if (NODE_ENV === 'production') {
     puppeteerOptions = {
       args: [
