@@ -123,7 +123,7 @@ jobs:
           root: ~/repo
           paths:
             - itc-helper-crawler/docker-image
-  deploy:
+  deploy-crawler:
     docker:
       - image: circleci/python:3.6.1
     working_directory: ~/repo/itc-helper-crawler
