@@ -40,7 +40,7 @@ make_task_def(){
 			"logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "itc-helper-crawler",
+          "awslogs-group": "/aws/ecs/itc-helper-crawler",
           "awslogs-region": "ap-northeast-2",
           "awslogs-stream-prefix": "crawler"
         }
