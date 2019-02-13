@@ -32,10 +32,10 @@ deploy_cluster() {
 }
 
 make_task_def(){
-	task_template='[
+	task_def='[
 		{
-			"name": "%s",
-			"image": "%s.dkr.ecr.%s.amazonaws.com/%s:%s",
+			"name": "'$ECS_CONTAINER_DEFINITION_NAME'",
+			"image": "'$AWS_ACCOUNT_ID'.dkr.ecr.'$AWS_DEFAULT_REGION'.amazonaws.com/'$ECR_REPOSITORY_NAME':'$CIRCLE_SHA1'",
 			"essential": true,
 			"logConfiguration": {
         "logDriver": "awslogs",
@@ -97,10 +97,6 @@ make_task_def(){
       ]
 		}
 	]'
-
-  echo "$task_template"
-
-  task_def=$(printf "$task_template" $ECS_CONTAINER_DEFINITION_NAME $AWS_ACCOUNT_ID $AWS_DEFAULT_REGION $ECR_REPOSITORY_NAME $CIRCLE_SHA1)
 }
 
 register_definition() {
