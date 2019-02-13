@@ -14,6 +14,7 @@ const consumer = async () => {
   let puppeteerOptions = {};
   console.log(NODE_ENV);
   console.log(CHROME_BIN);
+  console.log(SQS_QUEUE_URL);
   if (NODE_ENV === 'production') {
     puppeteerOptions = {
       args: [
