@@ -47,10 +47,6 @@ make_task_def(){
       },
       "environment": [
         {
-          "name": "NODE_ENV",
-          "value": "'${NODE_ENV}'"
-        },
-        {
           "name": "DYNAMODB_TABLE_ACCESS_TOKEN",
           "value":  "'${DYNAMODB_TABLE_ACCESS_TOKEN}'"
         },

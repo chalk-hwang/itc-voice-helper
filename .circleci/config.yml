@@ -154,7 +154,6 @@ jobs:
             export ECS_TASK_FAMILY_NAME="${AWS_RESOURCE_NAME_PREFIX}_ecs_service"
             export ECS_CONTAINER_DEFINITION_NAME="${AWS_RESOURCE_NAME_PREFIX}_ecs_service"
             export EXECUTION_ROLE_ARN="arn:aws:iam::$AWS_ACCOUNT_ID:role/${AWS_RESOURCE_NAME_PREFIX}_ecs_task_execution_role"
-            export NODE_ENV="${NODE_ENV}"
             export DYNAMODB_TABLE_ACCESS_TOKEN="${DYNAMODB_TABLE_ACCESS_TOKEN}"
             export DYNAMODB_TABLE_REFRESH_TOKEN="${DYNAMODB_TABLE_REFRESH_TOKEN}"
             export DYNAMODB_TABLE_AUTHORIZATION_CODE="${DYNAMODB_TABLE_AUTHORIZATION_CODE}"
