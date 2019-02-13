@@ -84,15 +84,15 @@ make_task_def(){
         },
         {
           "name": "SECRET_KEY",
-          "value":  "${SECRET_KEY}
+          "value": "${SECRET_KEY}"
         },
         {
           "name": "PUPPETEER_CLUSTER_HEADLESS",
-          "value":  "${PUPPETEER_CLUSTER_HEADLESS}"
+          "value": "${PUPPETEER_CLUSTER_HEADLESS}"
         },
         {
           "name": "PUPPETEER_CLUSTER_MONITOR",
-          "value":  "${PUPPETEER_CLUSTER_MONITOR}"
+          "value": "${PUPPETEER_CLUSTER_MONITOR}"
         }
       ]
 		}
