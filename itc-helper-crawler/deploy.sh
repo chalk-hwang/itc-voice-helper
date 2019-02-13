@@ -48,56 +48,56 @@ make_task_def(){
       "environment": [
         {
           "name": "NODE_ENV",
-          "value": \"$NODE_ENV\"
+          "value": "$NODE_ENV"
         },
         {
           "name": "DYNAMODB_TABLE_ACCESS_TOKEN",
-          "value":  \"$DYNAMODB_TABLE_ACCESS_TOKEN\"
+          "value":  "$DYNAMODB_TABLE_ACCESS_TOKEN"
         },
         {
           "name": "DYNAMODB_TABLE_REFRESH_TOKEN",
-          "value":  \"$DYNAMODB_TABLE_ACCESS_TOKEN\"
+          "value":  "$DYNAMODB_TABLE_ACCESS_TOKEN"
         },
         {
           "name": "DYNAMODB_TABLE_AUTHORIZATION_CODE",
-          "value":  \"$DYNAMODB_TABLE_AUTHORIZATION_CODE\"
+          "value":  "$DYNAMODB_TABLE_AUTHORIZATION_CODE"
         },
         {
           "name": "DYNAMODB_TABLE_USER",
-          "value":  \"$DYNAMODB_TABLE_USER\"
+          "value":  "$DYNAMODB_TABLE_USER"
         },
         {
           "name": "DYNAMODB_TABLE_SUBJECT",
-          "value":  \"$DYNAMODB_TABLE_SUBJECT\"
+          "value":  "$DYNAMODB_TABLE_SUBJECT"
         },
         {
           "name": "DYNAMODB_TABLE_REPORT",
-          "value":  \"$DYNAMODB_TABLE_REPORT\"
+          "value":  "$DYNAMODB_TABLE_REPORT"
         },
         {
           "name": "DYNAMODB_TABLE_DEPARTMENT",
-          "value":  \"$DYNAMODB_TABLE_DEPARTMENT\"
+          "value":  "$DYNAMODB_TABLE_DEPARTMENT"
         },
         {
           "name": "SQS_QUEUE_URL",
-          "value":  \"$SQS_QUEUE_URL\"
+          "value":  "$SQS_QUEUE_URL"
         },
         {
           "name": "KMS_KEY_ID",
-          "value":  \"$KMS_KEY_ID\"
+          "value":  "$KMS_KEY_ID"
         },
         {
           "name": "SECRET_KEY",
-          "value":  \"$SECRET_KEY\"
+          "value":  "$SECRET_KEY"
         },
         {
           "name": "PUPPETEER_CLUSTER_HEADLESS",
-          "value":  \"$PUPPETEER_CLUSTER_HEADLESS\"
+          "value":  "$PUPPETEER_CLUSTER_HEADLESS"
         },
         {
           "name": "PUPPETEER_CLUSTER_MONITOR",
-          "value":  \"$PUPPETEER_CLUSTER_MONITOR\"
-        },
+          "value":  "$PUPPETEER_CLUSTER_MONITOR"
+        }
       ]
 		}
 	]'
