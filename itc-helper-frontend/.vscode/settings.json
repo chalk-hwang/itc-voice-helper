@@ -3,5 +3,6 @@
   "editor.formatOnSave": true,
   "javascript.format.enable": false,
   "prettier.eslintIntegration": true,
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "git.ignoreLimitWarning": true
 }

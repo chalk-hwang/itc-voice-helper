@@ -13,6 +13,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cp -rf ../itc-helper-backend/src/models ./src && NODE_PATH=src APP_ENV=local nodemon --exec babel-node --signal SIGHUP -- src/launch",
+    "build": "rm -rf dist && NODE_ENV=production babel src -d dist",
+    "start": "NODE_PATH=dist node dist/launch",
     "prettier:watch": "onchange '**/*.js' -- prettier-eslint --write {{changed}}"
   },
   "devDependencies": {

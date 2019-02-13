@@ -1,6 +1,21 @@
-import Consumer from 'sqs-consumer';
-import { Cluster } from 'puppeteer-cluster';
-import studentIdentityCheck from 'crawlers/studentIdentityCheck';
+
+
+Object.defineProperty(exports, '__esModule', {
+  value: true,
+});
+exports.default = void 0;
+
+const _sqsConsumer = _interopRequireDefault(require('sqs-consumer'));
+
+const _puppeteerCluster = require('puppeteer-cluster');
+
+const _studentIdentityCheck = _interopRequireDefault(
+  require('crawlers/studentIdentityCheck'),
+);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 const {
   PUPPETEER_CLUSTER_HEADLESS,
@@ -11,20 +26,22 @@ const {
 
 const consumer = async () => {
   let puppeteerOptions = {};
+  console.log(NODE_ENV);
+
   if (NODE_ENV === 'production') {
     puppeteerOptions = {
       args: [
         // Required for Docker version of Puppeteer
         '--no-sandbox',
-        '--disable-setuid-sandbox',
-        // This will write shared memory files into /tmp instead of /dev/shm,
+        '--disable-setuid-sandbox', // This will write shared memory files into /tmp instead of /dev/shm,
         // because Docker’s default for /dev/shm is 64MB
         '--disable-dev-shm-usage',
       ],
     };
   }
-  const cluster = await Cluster.launch({
-    concurrency: Cluster.CONCURRENCY_CONTEXT,
+
+  const cluster = await _puppeteerCluster.Cluster.launch({
+    concurrency: _puppeteerCluster.Cluster.CONCURRENCY_CONTEXT,
     maxConcurrency: 2,
     monitor: PUPPETEER_CLUSTER_MONITOR === 'true',
     puppeteerOptions: {
@@ -34,16 +51,17 @@ const consumer = async () => {
       ...puppeteerOptions,
     },
   });
-
   cluster.on('taskerror', (err, data) => {
     let reData = data;
+
     if (typeof data === 'object') {
       reData = JSON.stringify(data);
     }
+
     console.log(`Error crawling ${reData}: ${err.message}`);
   });
 
-  const app = Consumer.create({
+  const app = _sqsConsumer.default.create({
     queueUrl: SQS_QUEUE_URL,
     attributeNames: ['All'],
     messageAttributeNames: ['Type', 'UserId', 'UserStudentId', 'UserStudentPw'],
@@ -55,8 +73,12 @@ const consumer = async () => {
       const userStudentId = MessageAttributes.UserStudentId.StringValue;
       const userStudentPw = MessageAttributes.UserStudentPw.StringValue;
       cluster.queue(
-        { userId, userStudentId, userStudentPw },
-        studentIdentityCheck,
+        {
+          userId,
+          userStudentId,
+          userStudentPw,
+        },
+        _studentIdentityCheck.default,
       );
       done();
     },
@@ -65,15 +87,13 @@ const consumer = async () => {
   app.on('error', (err) => {
     console.log(err.message);
   });
-
   app.start();
-
   await cluster.idle();
-
   return {
     consumerServer: app,
     consumerCluster: cluster,
   };
 };
 
-export default consumer;
+const _default = consumer;
+exports.default = _default;
