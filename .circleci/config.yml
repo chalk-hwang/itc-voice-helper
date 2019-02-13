@@ -86,22 +86,6 @@ jobs:
             - node_modules
           key: v1-crawler-{{ checksum "package.json" }}
       - run:
-          name: Setup crawler environment variables
-          command: |
-            echo 'NODE_ENV=${NODE_ENV}' >> .env
-            echo 'DYNAMODB_TABLE_ACCESS_TOKEN=${DYNAMODB_TABLE_ACCESS_TOKEN}' >> .env
-            echo 'DYNAMODB_TABLE_REFRESH_TOKEN=${DYNAMODB_TABLE_REFRESH_TOKEN}' >> .env
-            echo 'DYNAMODB_TABLE_AUTHORIZATION_CODE=${DYNAMODB_TABLE_AUTHORIZATION_CODE}' >> .env
-            echo 'DYNAMODB_TABLE_USER=${DYNAMODB_TABLE_USER}' >> .env
-            echo 'DYNAMODB_TABLE_SUBJECT=${DYNAMODB_TABLE_SUBJECT}' >> .env
-            echo 'DYNAMODB_TABLE_REPORT=${DYNAMODB_TABLE_REPORT}' >> .env
-            echo 'DYNAMODB_TABLE_DEPARTMENT=${DYNAMODB_TABLE_DEPARTMENT}' >> .env
-            echo 'SQS_QUEUE_URL=${SQS_QUEUE_URL}' >> .env
-            echo 'KMS_KEY_ID=${KMS_KEY_ID}' >> .env
-            echo 'SECRET_KEY=${SECRET_KEY}' >> .env
-            echo 'PUPPETEER_CLUSTER_HEADLESS=${PUPPETEER_CLUSTER_HEADLESS}' >> .env
-            echo 'PUPPETEER_CLUSTER_MONITOR=${PUPPETEER_CLUSTER_MONITOR}' >> .env
-      - run:
           name: Make the executable
           command: |
             yarn build
@@ -170,6 +154,19 @@ jobs:
             export ECS_TASK_FAMILY_NAME="${AWS_RESOURCE_NAME_PREFIX}_ecs_service"
             export ECS_CONTAINER_DEFINITION_NAME="${AWS_RESOURCE_NAME_PREFIX}_ecs_service"
             export EXECUTION_ROLE_ARN="arn:aws:iam::$AWS_ACCOUNT_ID:role/${AWS_RESOURCE_NAME_PREFIX}_ecs_task_execution_role"
+            export NODE_ENV="${NODE_ENV}"
+            export DYNAMODB_TABLE_ACCESS_TOKEN="${DYNAMODB_TABLE_ACCESS_TOKEN}"
+            export DYNAMODB_TABLE_REFRESH_TOKEN="${DYNAMODB_TABLE_REFRESH_TOKEN}"
+            export DYNAMODB_TABLE_AUTHORIZATION_CODE="${DYNAMODB_TABLE_AUTHORIZATION_CODE}"
+            export DYNAMODB_TABLE_USER="${DYNAMODB_TABLE_USER}"
+            export DYNAMODB_TABLE_SUBJECT="${DYNAMODB_TABLE_SUBJECT}"
+            export DYNAMODB_TABLE_REPORT="${DYNAMODB_TABLE_REPORT}"
+            export DYNAMODB_TABLE_DEPARTMENT="${DYNAMODB_TABLE_DEPARTMENT}"
+            export SQS_QUEUE_URL="${SQS_QUEUE_URL}"
+            export KMS_KEY_ID="${KMS_KEY_ID}"
+            export SECRET_KEY="${SECRET_KEY}"
+            export PUPPETEER_CLUSTER_HEADLESS="${PUPPETEER_CLUSTER_HEADLESS}"
+            export PUPPETEER_CLUSTER_MONITOR="${PUPPETEER_CLUSTER_MONITOR}"
             chmod +x ./deploy.sh
             ./deploy.sh
 workflows:
