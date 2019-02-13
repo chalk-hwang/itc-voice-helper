@@ -102,9 +102,9 @@ jobs:
             echo 'PUPPETEER_CLUSTER_HEADLESS=${PUPPETEER_CLUSTER_HEADLESS}' >> .env
             echo 'PUPPETEER_CLUSTER_MONITOR=${PUPPETEER_CLUSTER_MONITOR}' >> .env
       - run:
-        name: Make the executable
-        command: |
-          yarn build
+          name: Make the executable
+          command: |
+            yarn build
       - run:
           name: Setup common environment variables
           command: |
