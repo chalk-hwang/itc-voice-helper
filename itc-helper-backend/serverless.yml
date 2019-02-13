@@ -11,7 +11,6 @@ provider:
   name: aws
   runtime: nodejs8.10
   region: ap-northeast-2
-  profile: dguri
   environment:
     DYNAMODB_TABLE_ACCESS_TOKEN: ${env:DYNAMODB_TABLE_ACCESS_TOKEN}
     DYNAMODB_TABLE_REFRESH_TOKEN: ${env:DYNAMODB_TABLE_REFRESH_TOKEN}
