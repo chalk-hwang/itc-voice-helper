@@ -170,6 +170,7 @@ jobs:
             export ECS_TASK_FAMILY_NAME="${AWS_RESOURCE_NAME_PREFIX}_ecs_service"
             export ECS_CONTAINER_DEFINITION_NAME="${AWS_RESOURCE_NAME_PREFIX}_ecs_service"
             export EXECUTION_ROLE_ARN="arn:aws:iam::$AWS_ACCOUNT_ID:role/${AWS_RESOURCE_NAME_PREFIX}_ecs_task_execution_role"
+            chmod +x ./deploy.sh
             ./deploy.sh
 workflows:
   version: 2
