@@ -102,12 +102,13 @@ data "aws_ecs_task_definition" "crawler_task" {
 resource "aws_ecs_service" "crawler_service" {
   name            = "${local.aws_ecs_service_name}"
   task_definition = "${aws_ecs_task_definition.crawler_task.family}:${max("${aws_ecs_task_definition.crawler_task.revision}", "${data.aws_ecs_task_definition.crawler_task.revision}")}"
-  desired_count   = 2
+  desired_count   = 1
   launch_type     = "FARGATE"
   cluster         = "${aws_ecs_cluster.crawler_cluster.id}"
 
   network_configuration {
-    security_groups = ["${aws_security_group.crawler_service.id}"]
-    subnets         = ["${var.subnets_ids}"]
+    security_groups  = ["${aws_security_group.crawler_service.id}"]
+    subnets          = ["${var.subnets_ids}"]
+    assign_public_ip = true
   }
 }
