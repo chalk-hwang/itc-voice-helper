@@ -11,7 +11,7 @@
     "immer": "^1.10.4",
     "include-media": "^1.4.9",
     "nanobar": "^0.4.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "open-color": "^1.6.3",
     "query-string": "^6.2.0",
     "react": "^16.6.3",
