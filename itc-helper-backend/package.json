@@ -39,7 +39,7 @@
   "dependencies": {
     "@koa/cors": "2.2.3",
     "aws-sdk": "^2.175.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "camelcase": "^5.0.0",
     "date-fns": "^1.29.0",
