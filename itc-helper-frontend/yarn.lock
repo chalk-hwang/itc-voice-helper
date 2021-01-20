@@ -4643,10 +4643,10 @@ immer@1.7.2:
   resolved "https://registry.yarnpkg.com/immer/-/immer-1.7.2.tgz#a51e9723c50b27e132f6566facbec1c85fc69547"
   integrity sha512-4Urocwu9+XLDJw4Tc6ZCg7APVjjLInCFvO4TwGsAYV5zT6YYSor14dsZR0+0tHlDIN92cFUOq+i7fC00G5vTxA==
 
-immer@^1.10.4:
-  version "1.10.4"
-  resolved "https://registry.yarnpkg.com/immer/-/immer-1.10.4.tgz#404c6680981b3e84ecfe556e1ba43a9fbfe708f4"
-  integrity sha512-4i8Y+cZQK3x5Sm/YT3R7JwOB6ozVFQuDPqxiiVWzBhaU5FoZ1dCoRH24CmB4z6BH8oenicTW/FrajTUDhajJDg==
+immer@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-8.0.1.tgz#9c73db683e2b3975c424fb0572af5889877ae656"
+  integrity sha512-aqXhGP7//Gui2+UrEtvxZxSquQVXTpZ7KDxfCcKAF3Vysvw0CViVaW9RZ1j1xlIYqaaaipBoqdqeibkc18PNvA==
 
 import-cwd@^2.0.0:
   version "2.1.0"
